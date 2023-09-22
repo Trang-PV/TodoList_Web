@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList JS</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- font roboto -->
+
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="todolist">
+        <div class="card-header">
+            <img src="img/X2oObC4.png" alt="">
+        </div>
+        <div class="card-body">
+
+            <div class="card-filter">
+                <a id="one" href="#">
+                    <i class="fa-solid fa-circle-check"></i>
+                </a>
+                <a id="two" href="#">
+                    <i class="fa-solid fa-arrow-down-a-z"></i>
+                </a>
+                <a id="three" href="#">
+                    <i class="fa-solid fa-arrow-up-a-z"></i>
+                </a>
+                <a id="four" href="#">
+                    <i class="fa-solid fa-clock"></i>
+                </a>
+                <span class="toggle-btn">
+                    <i class="filter fa-solid fa-filter"></i>
+                    <i class="close fa-solid fa-xmark"></i>
+                </span>
+            </div>
+
+
+            <div class="card-content">
+                <div class="card-title">
+                    <h2>My Tasks</h2>
+                    <p>September 9,2020</p>
+                </div>
+
+                <div class="card__add">
+                    <input id="newTask" type="text" placeholder="Enter an activity...">
+                    <button class="addItem">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <div class="card__todo">
+                    <!-- Uncompleted tasks -->
+                    <ul class="todo" id="todo">
+
+
+                        <div class="card__todo--messenger">You have nothing to-do!</div>
+                    </ul>
+
+                    <div class="hr"></div>
+
+                    <!-- Completed tasks -->
+                    <ul class="todo" id="completed">
+
+
+
+
+                        <div class="card__todo--messenger">You have yet to complete any tasks. </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

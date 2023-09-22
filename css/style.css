@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #FEE9F0;
+}
+
+.todolist {
+    margin: 50px auto;
+    background-color: #f5f8f9;
+    /* height: 430px; */
+    width: 350px;
+    box-shadow: 0 0 6px grey;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.card-header {
+    height: 235px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(71, 32, 84, 0.2);
+}
+
+.card-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* card-body */
+
+.card-body {
+    position: relative;
+
+}
+
+.card-body::after {
+    content: '';
+    width: 120%;
+    height: 60px;
+    background-color: #f5f8f9;
+    position: absolute;
+    top: -26px;
+    left: -10px;
+    transform: rotate(10deg);
+}
+
+.card-filter {
+    z-index: 999;
+    position: absolute;
+    right: 25px;
+    top: -30px;
+    height: 40px;
+    width: 40px;
+    /* background: #FA396B; */
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s;
+    z-index: 99999;
+}
+
+.card-filter.open {
+    transition: all 0.5s;
+}
+
+.card-filter::after {
+    content: '';
+    height: 150px;
+    width: 150px;
+    background-color: #FA396B;
+    position: absolute;
+    top: -55px;
+    right: -55px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.25s ease-in-out 0s;
+    z-index: 9999;
+}
+
+.card-filter.open::after {
+    transform: scale(1);
+}
+
+.card-filter a {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #fff;
+    transform: translate(0px, 0px);
+    transition: all 0.25s;
+    z-index: 99999;
+}
+
+.card-filter.open a:nth-child(1) {
+    transform: translate(9px, -48px);
+}
+
+.card-filter.open a:nth-child(2) {
+    transform: translate(-42px, -26px);
+}
+
+.card-filter.open a:nth-child(3) {
+    transform: translate(-39px, 29px);
+}
+
+.card-filter.open a:nth-child(4) {
+    transform: translate(6px, 52px);
+}
+
+.toggle-btn {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 1.8rem;
+    background-color: #FA396B;
+    border-radius: 50px;
+    color: #fff;
+    z-index: 99999;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+/* 
+.toggle-btn .close {
+    display: none;
+} */
+
+.card-filter.open .toggle-btn {
+    background-color: #DE3963;
+}
+
+.card-filter:not(.open) .close {
+    display: none;
+}
+
+.card-filter.open .filter {
+    display: none;
+}
+
+
+/* card-content --------------------- */
+
+.card-content {
+    padding: 0 20px 10px;
+    position: relative;
+    z-index: 99;
+}
+
+.card-title {
+    font-size: 1.7rem;
+
+}
+
+.card-title p {
+    font-size: 1.4rem;
+    padding: 10px 0;
+    letter-spacing: 1px
+}
+
+.card__add {
+    display: flex;
+    position: relative;
+    margin-top: 5px;
+}
+
+.card__add button {
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 0 2px rgb(222 57 99);
+    cursor: pointer;
+    outline: none;
+}
+
+.card__add input {
+    width: 100%;
+    height: 40px;
+    /* float: left; */
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0 60px 0 10px;
+    background: rgba(222, 57, 99, 0.6);
+    /* border-radius: 3px; */
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+}
+
+.card__add input::placeholder {
+    color: #fff;
+}
+
+.card__add i {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    background: #fff;
+    line-height: 40px;
+    color: #DE3963;
+    transition: all 0.25s;
+}
+
+.card__add i:hover {
+    background-color: #F5F5F5;
+}
+
+/* card__todo-------------- */
+.card__todo {
+    position: relative;
+}
+
+
+ul.todo#todo {
+    padding-top: 30px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 40px;
+}
+
+ul.todo::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+
+ul.todo::-webkit-scrollbar-thumb {
+    background-color: rgba(222, 57, 99, 0.5);
+    border-radius: 10px;
+}
+
+ul.todo::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.hr {
+    width: 50%;
+    height: 1px;
+    background: #d8e5e0;
+    position: relative;
+    top: -15px;
+    margin: auto;
+}
+
+ul.todo#completed {
+    margin-top: 22px 0 10px;
+    position: relative;
+    padding-right: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* 
+ul.todo#completed:before {
+    content: '';
+    width: 150px;
+    height: 1px;
+    background: #d8e5e0;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    margin: 0 0 0 -75px;
+} */
+
+.card__todo--messenger {
+    user-select: none;
+    color: #888;
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 25px 0;
+}
+
+ul.todo li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 35px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #444;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgb(44 62 80 / 30%);
+    margin: 0 0 10px 0;
+    padding: 0 10px;
+    word-break: break-word;
+}
+
+ul.todo li span {
+    user-select: none;
+}
+
+
+ul.todo li .buttons button {
+    background: none;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 5px 0 5px 5px;
+    font-size: 1.6rem;
+}
+
+/* ul.todo li~.card__todo--messenger {
+    display: block;
+} */
+
+ul#todo .card__todo--messenger {
+    display: none;
+}
+
+/* #completed .card__todo--messenger {
+    display: none;
+} */
+
+
+/* đổi màu check và noCheck */
+.complete .noCheck:hover {
+    color: #25b99a;
+}
+
+.complete .check {
+    color: #25b99a;
+}
+
+
+/* sét màu cho btn delete và checl */
+ul.todo li .buttons .remove {
+    color: #aaa;
+    transition: all 0.25s;
+}
+
+ul.todo li .buttons .remove i {
+    transition: all 0.25s;
+}
+
+ul.todo li .buttons .remove:hover i {
+    color: #DE3963;
+}
+
+ul.todo li .buttons .complete {
+    color: #aaa;
+}
+
+
+/* hiện và ẩn noCheck */
+ul#todo li .buttons .complete .noCheck {
+    display: block;
+}
+
+ul#todo li .buttons .complete .check {
+    display: none;
+}
+
+/* hiện và ẩn check */
+ul#completed li .buttons .complete .check {
+    display: block;
+}
+
+ul#completed li .buttons .complete .noCheck {
+    display: none;
+}
+
+ul#completed li span {
+    color: #25b99a;
+}
